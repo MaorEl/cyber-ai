@@ -12,17 +12,21 @@
 11. decide on a splitting method for the email body. - for chain email. (maybe only for fowarding mails.)
 
 Maor:
+For next meeting:
+6. Introduction & Problem Formulation in the paper.
+8. content analysis - 2+ methods we want to implement. decide on the method. (Cons/Pros for several methods, later will choose based on that)
+
 10. Add readme file to the project.
 9. start writing the EDA section of the paper.
-8. content analysis - 2+ methods we want to implement. decide on the method. (Cons/Pros for several methods, later will choose based on that)
 11. decide on a splitting method for the email body. - for chain email. (maybe only for fowarding mails.)
 
 
 Efi:
+For next meeting:
 2. preproccess the data - data cleaning and formatting.
-3. user to location, ECT/EES/Third-Party/Other?,  mapping.
-6. Introduction & Problem Formulation in the paper.
 9. topic analysis - a method we want to implement. - decide on the method. (Cons/Pros for several methods, later will choose based on that)
+
+3. user to location, ECT/EES/Third-Party/Other?,  mapping.
 4. user to role(Example: legal), mapping. // maybe its already implemented inside the model.
 
 
