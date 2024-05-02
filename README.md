@@ -5,7 +5,7 @@ The DLP Gateway Policy Enforcer is a tool that allows you to enforce DLP policie
 
 ### Authors
 - Maor Elfassy
-- Efraim #Todo Efraim - add your name
+- Efraim Yosofov
 
 ### How to run it?
 1. Clone the repository
@@ -45,4 +45,4 @@ result = classify_mail(email_content)
 - `eda.ipynb` - a Jupyter notebook contains our EDA - exploratory data analysis
 - `template.ipynb` - a Jupyter notebook contains the template for the DLP Gateway Policy Enforcer 
 
-# Todo Maor - edit the section above
+#####  #Todo Maor - edit the section above
