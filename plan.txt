@@ -20,7 +20,8 @@ For next meeting:
 8. content analysis - 2+ methods we want to implement. decide on the method. (Cons/Pros for several methods, later will choose based on that)
 10. Add readme file to the project.
 11. decide on a splitting method for the email body. - for chain email. (maybe only for fowarding mails.) - only for paper
-
+Method + results
+Related work
 
 Efi:
 For next meeting:
@@ -28,6 +29,15 @@ For next meeting:
 9. topic analysis - a method we want to implement. - decide on the method. (Cons/Pros for several methods, later will choose based on that) - LDA not good enough. TF-IDF (need to recheck), BertTopic good but heavy. 
 1. contextual analysis - a method we want to implement. - decide on the method.
 3. user to location
+Method + results
+Roles
+Related work
+Limitation and Future Work
+
+Why our results is good? - maybe because of the data we have. We are working on a Enforcer for ENRON! if the data will change we will train once a month
+We will have a model that will be trained once a month.
+
+WE ARE NOT BUILDING A SOFTWARE FOR EVERYONE
 
 Done:
 4. user to Departments(Example: legal), mapping
