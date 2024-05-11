@@ -147,6 +147,8 @@ def preprocess_text(text, should_remove_small_words=False, lemmatize=False, shou
         text = remove_small_words(text)
     if lemmatize:
         text = tokenize_and_lemmatize(text)
+
+
     
     return text
 
