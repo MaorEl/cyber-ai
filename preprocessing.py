@@ -75,10 +75,11 @@ def remove_foward_text(text: str):
     text = text.replace(':', ' ')
     return text
     
-def remove_email_headers(text):
+def remove_email_headers(text, should_remove_digits=False):
     # Remove email headers and any non-alphabetic characters
     text = re.sub(r'\b(email|subject|sent|from|to|message|original|pm)\b', '', text)
-    text = re.sub(r'[^a-z\s]', ' ', text)
+    if should_remove_digits:
+        text = re.sub(r'[^a-z\s]', ' ', text)
     return text
 
 def tokenize_and_lemmatize(text):
@@ -137,11 +138,11 @@ def data_cleaning(enron_df: pd.DataFrame, lemmatize: bool = True):
         print('lemmatized')
 
 
-def preprocess_text(text, should_remove_small_words=False, lemmatize=False):
+def preprocess_text(text, should_remove_small_words=False, lemmatize=False, should_remove_digits=False):
     text = remove_attachment_text(text)
     text = parse_contacts(text)
     text = remove_foward_text(text)
-    text = remove_email_headers(text)
+    text = remove_email_headers(text, should_remove_digits)
     if should_remove_small_words:
         text = remove_small_words(text)
     if lemmatize:
