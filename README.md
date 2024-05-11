@@ -39,6 +39,19 @@ result = classify_mail(email_content)
   - Example: mail with internal company IP addresses and employee addresses.
 
 
+### Developer - How to install?
+In order to install the spaCy model, you need to run the following command:
+```bash
+python -m venv .env
+source .env/bin/activate
+pip3 install -U pip setuptools wheel
+pip3 install -U 'spacy[transformers,lookups,apple]'
+python3 -m spacy download en_core_web_trf
+python3 -m spacy download en_core_web_sm
+```
+* Read more about the installation of the spaCy model [here](https://spacy.io/usage/models)
+
+
 ###  Files
 - `dlp_gateway/` - the main package
   - `api.py` - the main API for the DLP Gateway Policy Enforcer

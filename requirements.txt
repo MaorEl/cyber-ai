@@ -6,3 +6,5 @@ pandas
 jupyter
 matplotlib
 seaborn
+spacy==3.7.2
+presidio-analyzer
