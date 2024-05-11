@@ -77,14 +77,15 @@ def remove_foward_text(text: str):
     
 def remove_email_headers(text, should_remove_digits=False):
     # Remove email headers and any non-alphabetic characters
-    text = re.sub(r'\b(email|subject|sent|from|to|message|original|pm)\b', '', text)
+    text = text.lower()
+    text = re.sub(r'\b(email|mail|subject|sent|from|to|message|original|pm)\b', '', text)
     if should_remove_digits:
         text = re.sub(r'[^a-z\s]', ' ', text)
     return text
 
 def tokenize_and_lemmatize(text):
     
-    remove_words = ['please', 'com', 'would', 'said', 'new', 'smith', 'thanks', 'use', 'also', 'know', 'original', 'email', 'california']
+    remove_words = ['email', 'hou', 'font', 'enron', 'ect', 'please', 'com', 'would', 'said', 'new', 'smith', 'thanks', 'use', 'also', 'know', 'original', 'email', 'california', 'outlook']
     
     # if text is None, return an empty list
     if text is None:
@@ -106,20 +107,32 @@ def tokenize_and_lemmatize(text):
     
     return ' '.join(tokens)
 
-def remove_small_words(text, min_length=3):
+def remove_small_words(text, min_length=3, max_length=15):
     # Tokenize the text by splitting on whitespace
     tokens = text.split()
     # Remove words that are less than `min_length` characters
-    tokens = [word for word in tokens if len(word) >= min_length]
+    tokens = [word for word in tokens if len(word) >= min_length and len(word) <= max_length]
     return ' '.join(tokens)
 
 
-def data_cleaning(enron_df: pd.DataFrame, lemmatize: bool = True):
+def remove_links(text):
+    # Regular expression to match URLs
+    # This pattern matches most common URL formats
+    pattern = r'\bhttps?://\S+|\bwww\.\S+'  
+    cleaned_text = re.sub(pattern, '', text)
+    return cleaned_text
+
+
+def data_cleaning(enron_df: pd.DataFrame, should_remove_links=False, lemmatize: bool = True):
     enron_df['email_text'] = enron_df['email_text'].apply(remove_attachment_text)
     print('removed attachments')
 
     enron_df['email_text'] = enron_df['email_text'].apply(parse_contacts)
     print('parsed contacts')
+
+    if should_remove_links:
+        enron_df['email_text'] = enron_df['email_text'].apply(remove_links)
+        print('removed links')
 
     enron_df['email_text'] = enron_df['email_text'].apply(remove_foward_text)
     print('removed foward text')
@@ -127,7 +140,7 @@ def data_cleaning(enron_df: pd.DataFrame, lemmatize: bool = True):
     enron_df['email_text'].fillna(' ', inplace=True)
     print('filled nan values')
 
-    enron_df['email_text'] = enron_df['email_text'].apply(remove_email_headers)
+    enron_df['email_text'] = enron_df['email_text'].apply(remove_email_headers, args=(True,))
     print('removed email headers')
 
     enron_df['email_text'] = enron_df['email_text'].apply(remove_small_words)
@@ -138,9 +151,11 @@ def data_cleaning(enron_df: pd.DataFrame, lemmatize: bool = True):
         print('lemmatized')
 
 
-def preprocess_text(text, should_remove_small_words=False, lemmatize=False, should_remove_digits=False):
+def preprocess_text(text, should_remove_links=False, should_remove_small_words=False, lemmatize=False, should_remove_digits=False):
     text = remove_attachment_text(text)
     text = parse_contacts(text)
+    if should_remove_links:
+        text = remove_links(text)
     text = remove_foward_text(text)
     text = remove_email_headers(text, should_remove_digits)
     if should_remove_small_words:
