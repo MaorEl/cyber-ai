@@ -17,7 +17,6 @@ pip install -r requirements.txt
 ```python
 from dlp_gateway.api import classify_mail
 email_content = {}
-# Todo maor - edit
 result = classify_mail(email_content)
 ```
 
@@ -52,9 +51,12 @@ python3 -m spacy download en_core_web_sm
 
 
 ###  Files
-- `dlp_gateway/` - the main package
-  - `api.py` - the main API for the DLP Gateway Policy Enforcer
+- `dlp_gateway_policy_enforcer.ipynb` - the main API for the DLP Gateway Policy Enforcer
 - `eda.ipynb` - a Jupyter notebook contains our EDA - exploratory data analysis
-- `template.ipynb` - a Jupyter notebook contains the template for the DLP Gateway Policy Enforcer 
+- `content_analysis_training.ipynb` - a Jupyter notebook contains the template for the DLP Gateway Policy Enforcer that compared between Spacy and Presidio
+- `lda_model.ipynb` - a Jupyter notebook contains the LDA model for the DLP Gateway Policy Enforcer
+- `bert_model.ipynb` - a Jupyter notebook contains the BERT model for the DLP Gateway Policy Enforcer
+- `random_forest.ipynb` - a Jupyter notebook contains the Random Forest model for the DLP Gateway Policy Enforcer
+- `preprocessing.py` - a Python script that contains the preprocessing functions for the DLP Gateway Policy Enforcer data
 
-#####  #Todo Maor - edit the section above
+#####  
